@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tool 工具集</title>
+    <link rel="icon" href="./ext/n.ico" type="image/x-icon" />
+    <meta name="Keywords" content="金融解析,个人使用请勿用于商用传播">
+    <meta name="Description" content="金融解析,个人使用请勿用于商用传播">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <script src="https://cdn.bootcss.com/vue/2.6.8/vue.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/vue/2.6.8/vue.js"></script> -->
+
+    <link rel="stylesheet" href="./ext/main.css">
+</head>
+
+<body>
+    <script src="./ext/navbar.js"></script>
+    <script src="./ext/tool.js"></script>
+    <div id="root">
+        <div>
+            <Navbar ref="Navbar" @toggle-type="changeType"></Navbar>
+            <div class="pager">
+                <div className="tip">
+                    <p>{{type}}☺ -v- Jest with an ass and he will flap you in the face with his tail.</p>
+                </div>
+                <jrzh_content v-if="activeContent('JRZH')"  ></jrzh_content>
+                <spzgif_content v-if="activeContent('SPZGIF')" />
+                                <clzh_content v-if="activeContent('CLZH')"></clzh_content>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                type: (window.location.hash.replace("#", "")) || "JRZH"
+            },
+            methods: {
+                activeContent(type){
+                    return this.type==type;
+                },
+                changeType(type) {
+                    this.type = type;
+                    window.location.hash = "#" + type;
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
