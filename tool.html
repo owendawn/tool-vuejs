@@ -26,9 +26,9 @@
                 <div className="tip">
                     <p>{{type}}☺ -v- Jest with an ass and he will flap you in the face with his tail.</p>
                 </div>
-                <jrzh_content v-if="activeContent('JRZH')"  ></jrzh_content>
-                <spzgif_content v-if="activeContent('SPZGIF')" />
-                                <clzh_content v-if="activeContent('CLZH')"></clzh_content>
+                <jrzh_content v-if="activeContent('JRZH')"></jrzh_content>
+                <spzgif_content v-if="activeContent('SPZGIF')"></spzgif_content>
+                <clzh_content v-if="activeContent('CLZH')"></clzh_content>
             </div>
         </div>
     </div>
@@ -40,8 +40,8 @@
                 type: (window.location.hash.replace("#", "")) || "JRZH"
             },
             methods: {
-                activeContent(type){
-                    return this.type==type;
+                activeContent(type) {
+                    return this.type == type;
                 },
                 changeType(type) {
                     this.type = type;

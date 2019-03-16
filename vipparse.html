@@ -33,7 +33,8 @@
         </div>
         <div class="control">
           <div class="row">
-            <select id="node" class="form-control col-3">
+              <div class="form-inline col-3 sm-nopading">
+            <select id="node" class="form-control" style="padding-right:3px;">
               <optgroup label="常用 ţ ɣ ƛ ɧ ƚ">
                 <template v-for="it in vipParser">
                   <option :value="it.url">
@@ -46,12 +47,13 @@
                 </template>
               </optgroup>
             </select>
+              </div>
             <div class="form-inline col-9 sm-nopading">
               <input type="text" id="vurl" class="form-control col-9" placeholder="输入视频网址" />
               <div class="col-3 sm-nopading">
                 <button class="btn btn-outline-success col-7 magicbtns" v-on:click="clickParse">解析</button>
                 <button class="btn btn-outline-info col-4 magicbtns" v-on:click="showModel"
-                  style="padding: 3px 0px 9px 0; vertical-align: top;">
+                  style="padding: 5px 0px 9px 0; vertical-align: top;">
                   <svg id="expand" class="feather feather-maximize-2 sc-iwsKbI cnlcoQ"
                     xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"
                     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
