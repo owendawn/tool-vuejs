@@ -39,7 +39,7 @@
                   <template v-for="it in vipParser">
                     <option :value="it.url">
                       {{it.tengxun?'ţ':'_'}}_{{it.youku?'ɣ':'_'}}_{{it.iqiyi?'ӻ':'_'}}_{{it.mangguo?'ɧ':'_'}}
-                      &emsp;节点&emsp;{{getName(it.url)}}{{it.newTab&&' +'}}
+                      &emsp;节点&emsp;{{getName(it.url)}}{{it.newTab?' +':''}}
                     </option>
                   </template>
                 </optgroup>
