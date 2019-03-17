@@ -33,21 +33,18 @@
         </div>
         <div class="control">
           <div class="row">
-              <div class="form-inline col-3 sm-nopading">
-            <select id="node" class="form-control" style="padding-right:3px;">
-              <optgroup label="常用 ţ ɣ ƛ ɧ ƚ">
-                <template v-for="it in vipParser">
-                  <option :value="it.url">
-                    {{it.tengxun?'ţ':'_'}}
-                    _{{it.youku?'ɣ':'_'}}
-                    _{{it.iqiyi?'ӻ':'_'}}
-                    _{{it.mangguo?'ɧ':'_'}}
-                    &emsp;节点&emsp;{{getName(it.url)}}{{it.newTab&&' +'}}
-                  </option>
-                </template>
-              </optgroup>
-            </select>
-              </div>
+            <div class="form-inline col-3 sm-nopading">
+              <select id="node" class="form-control" style="padding-right:3px;">
+                <optgroup label="常用 ţ ɣ ƛ ɧ ƚ">
+                  <template v-for="it in vipParser">
+                    <option :value="it.url">
+                      {{it.tengxun?'ţ':'_'}}_{{it.youku?'ɣ':'_'}}_{{it.iqiyi?'ӻ':'_'}}_{{it.mangguo?'ɧ':'_'}}
+                      &emsp;节点&emsp;{{getName(it.url)}}{{it.newTab&&' +'}}
+                    </option>
+                  </template>
+                </optgroup>
+              </select>
+            </div>
             <div class="form-inline col-9 sm-nopading">
               <input type="text" id="vurl" class="form-control col-9" placeholder="输入视频网址" />
               <div class="col-3 sm-nopading">
@@ -89,35 +86,29 @@
         isFull: false,
         type: null,
         vipParser: [
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "https://www.jqaaa.com/jx.php?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "https://2wk.com/vip.php?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://api.zuilingxian.com/jx.php?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://api.pucms.com/jx/api/?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "https://5.5252e.com/jx/b.php?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://api.wlzhan.com/sudu/?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "https://jx.618g.com/?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://vip.jlsprh.com/index.php?url=", newTab: true },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://v.2gty.com/apiurl/yun.php?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://a.2gty.com/apiurl/yun.php?url=" },
 
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://030e.com/api.php?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://vip.tt-hk.cn/beac.php?url=" },
-          { tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "https://jx.000180.top/180/?url=" },
-          { tengxun: false, youku: true, iqiyi: false, mangguo: true, url: "http://jx.vgoodapi.com/jx.php?url=" },
-          { tengxun: false, youku: true, iqiyi: false, mangguo: true, url: "http://000o.cc/jx/ty.php?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jvip.zz22x.com/jx/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://api.zuilingxian.com/jx.php?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://api.pucms.com/jx/api/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: true, mangguo: true, url: "http://jx.biaoge.tv/index.php?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: true, mangguo: true, url: "http://api.bbbbbb.me/jiexi/?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "http://api.nobij.top/?url=" },
 
-          { tengxun: true, youku: true, iqiyi: false, mangguo: false, url: "http://beaacc.com/vip1/0301/?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: false, url: "https://api.flvsp.com/?url=" },
-          { tengxun: true, youku: true, iqiyi: false, mangguo: false, url: "https://beaacc.com/21/?url=" },
-          { tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "http://v.2gty.com/apiurl/yun.php?url=" },
-          { tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "http://api.xfsub.com/index.php?url=&url=" },
-          { tengxun: false, youku: true, iqiyi: false, mangguo: false, url: "http://yun.baiyug.cn/vip/?url=" },
-          { tengxun: false, youku: true, iqiyi: false, mangguo: false, url: "http://jvip.zz22x.com/jx/?url=" },
-          { tengxun: false, youku: false, iqiyi: false, mangguo: true, url: "https://5.5252e.com/p/iqiyi.php?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: false, mangguo: true, url: "https://5.5252e.com/jx/b.php?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: false, mangguo: true, url: "https://jx.618g.com/?url=" },
+          { newTab: true, tengxun: false, youku: true, iqiyi: false, mangguo: true, url: "http://jx.vgoodapi.com/jx.php?url=" },
+          { newTab: false, tengxun: false, youku: false, iqiyi: true, mangguo: true, url: "http://vip.tt-hk.cn/beac.php?url=" },
 
-          { tengxun: false, youku: true, iqiyi: false, mangguo: false, url: "http://jiexi.071811.cc/jx2.php?url=" },
-          { tengxun: false, youku: false, iqiyi: false, mangguo: true, url: "http://www.917k.la/?url=" },
-          { tengxun: false, youku: false, iqiyi: false, mangguo: true, url: "https://api.653520.top/top/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: false, url: "https://jx.000180.top/180/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: false, url: "https://beaacc.com/21/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: false, url: "http://api.xfsub.com/index.php?url=&url=" },
+          { newTab: false, tengxun: false, youku: false, iqiyi: false, mangguo: true, url: "http://030e.com/api.php?url=" },
+          { newTab: false, tengxun: false, youku: false, iqiyi: false, mangguo: true, url: "http://yun.baiyug.cn/vip/?url=" },
+          { newTab: false, tengxun: false, youku: false, iqiyi: false, mangguo: true, url: "https://5.5252e.com/p/iqiyi.php?url=" },
+          { newTab: false, tengxun: false, youku: false, iqiyi: false, mangguo: true, url: "http://www.917k.la/?url=" },
 
-          { tengxun: false, youku: false, iqiyi: false, mangguo: false, url: "http://app.baiyug.cn:2019/vip/search/iqiyi.php?url=" },
         ]
       },
       mounted() {
