@@ -499,7 +499,7 @@ Vue.component("jwzh_content", {
         '       <input class="price dfm jw-text" type="number" id="rawdu"> °&nbsp;',
         '       <input class="price dfm jw-text" type="number" id="rawfen"> \'&nbsp;',
         '       <input class="price dfm jw-text" type="number" id="rawmiao"> "',
-        '       <button class="btn btn-success" v-on:click="changeToDFM">转换</button>',
+        '       <button class="btn btn-success" v-on:click="changeToDu">转换</button>',
         '   </div>',
         '   <hr>',
         '   <div>',
