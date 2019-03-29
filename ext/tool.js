@@ -480,4 +480,99 @@ Vue.component("spzgif_content", {
 });
 
 
+// ==================================== 金融转换部分========================================
+Vue.component("jwzh_content", {
+    template: [
+        '<div class="content">',
+        '   <div>',
+        '       <strong>经纬度</strong><small> （小&emsp;数）</small>：',
+        '       <input class="price jw-text" type="text" id="raw">',
+        '       <button class="btn btn-success" v-on:click="changeToDFM">转换</button>',
+        '   </div>',
+        '   <div style="margin-top: 35px;">',
+        '       <strong>经纬度</strong><small> （度分秒）</small>：',
+        '       <input class="price dfm jw-text" type="text" id="rawdu1">',
+        '       <button class="btn btn-success" v-on:click="parseToDu">匹配</button>',
+        '   </div>',
+        '   <div style="margin-top: 5px;">',
+        '       <strong>经纬度</strong><small> （度分秒）</small>：',
+        '       <input class="price dfm jw-text" type="number" id="rawdu"> °&nbsp;',
+        '       <input class="price dfm jw-text" type="number" id="rawfen"> \'&nbsp;',
+        '       <input class="price dfm jw-text" type="number" id="rawmiao"> "',
+        '       <button class="btn btn-success" v-on:click="changeToDFM">转换</button>',
+        '   </div>',
+        '   <hr>',
+        '   <div>',
+        '       <strong>经纬度</strong><small> （小&emsp;数）</small>：',
+        '       <input class="price jw-text" type="text" id="jwxs">',
+        '       <span><button class="cp btn btn-primary" data-clipboard-target="#jwxs" aria-label="复制成功！">复制</button></span>',
+        '   </div>',
+        '   <div style="margin-top: 5px;">',
+        '       <strong>经纬度</strong><small> （度分秒）</small>：',
+        '       <input class="price jw-text" type="text" id="jwdfm">',
+        '       <span><button class="cp btn btn-primary" data-clipboard-target="#jwdfm" aria-label="复制成功！">复制</button></span>',
+        '   </div>',
+        '</div>'
+    ].join(""),
+    mounted() {
+        Tools.syncLoadScripts(["https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.js"], function () {
+            new Clipboard('.cp').on('success', function (e) {
+                var thedom = e.trigger;
+                var i = document.createElement("i");
+                i.innerHTML = '✔';
+                i.setAttribute("class", "flag");
+                i.style = "font-weight:bolder;color:#e314e4;font-size:17pt;";
+                thedom.parentNode.appendChild(i);
+                setTimeout(function () {
+                    // thedom.parentNode.removeChild(i);
+                }, 3000);
+                e.clearSelection();
+            });
+        });
+
+    },
+    methods: {
+        changeToDFM() {
+            var du = document.getElementById("raw").value;
+            var str1 = du.split(".");
+            if(str1.length>2){
+                alert("异常数据");
+                return;
+            }
+            var du1 = str1[0];
+            var tp = "0." + str1[1]
+            var tp = String(tp * 60.00);		//这里进行了强制类型转换
+            var str2 = tp.split(".");
+            var fen = str2[0];
+            tp = "0." + (str2[1]||0);
+            tp = tp * 60;
+            var miao = tp;
+            document.getElementById("jwdfm").value = du1 + "°" + fen + "'" + miao + "\"";
+            document.getElementById("jwxs").value = du;
+        },
+    
+        changeToDu() {
+            var d = document.getElementById("rawdu").value;
+            var f = document.getElementById("rawfen").value;
+            var m = document.getElementById("rawmiao").value;
+    
+            var ff = parseFloat(f) + parseFloat(m / 60);
+            var du = parseFloat(ff / 60) + parseFloat(d);
+            document.getElementById("jwxs").value = du;
+            document.getElementById("jwdfm").value = d + "°" + f + "'" + m + "\"";
+        },
+    
+        parseToDu(){
+            var all=document.getElementById("rawdu1").value;
+            var str1=all.trim().split("°");
+            document.getElementById("rawdu").value=str1[0];
+            var str2=str1[1].trim().split("'");
+            document.getElementById("rawfen").value=str2[0];
+            document.getElementById("rawmiao").value=str2[1].replace("\"","");
+        }
+    }
+});
+
+
+
 // ==================================== 其他========================================

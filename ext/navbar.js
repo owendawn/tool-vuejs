@@ -12,6 +12,7 @@ Vue.component("Navbar",{
         '                <a class="nav-link dropdown-toggle" v-on:click="toggleDropDown(\'navbarDropdown\')" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">工具集</a>',
         '                <div class="dropdown-menu" aria-labelledby="navbarDropdown">',
         '                    <a class="dropdown-item" v-on:click="urlChange(\'JRZH\')"> 金 融 转 换 </a>',
+        '                    <a class="dropdown-item" v-on:click="urlChange(\'JWZH\')"> 经 纬 转 换 </a>',
         '                    <a class="dropdown-item" v-on:click="urlChange(\'SPZGIF\')">视频 转 GIF</a>',
         '                    <a class="dropdown-item" href="#">Another action</a>',
         '                    <div class="dropdown-divider"></div>',
