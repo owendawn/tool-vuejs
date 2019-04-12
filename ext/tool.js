@@ -77,6 +77,20 @@ Vue.component("clzh_content", {
         '    <span>',
         '        <button class="cp btn btn-primary btn-sm" data-clipboard-target="#realurl" aria-label="复制成功！">复制</button>',
         '    </span>',
+        '    <div>',
+        '    <button class="btn btn-info btn-sm" v-on:click="jumpToDownload(\'http://btcache.me/torrent/\')">',
+        '       <svg height="18" class="octicon octicon-cloud-download" viewBox="0 0 16 16" version="1.1" width="26" aria-hidden="true"><path fill="#fff" fill-rule="evenodd" d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"></path></svg>',
+        '       btcache.me ',
+        '    </button>',
+        '    <button class="btn btn-info btn-sm" v-on:click="jumpToDownload(\'https://itorrents.org/torrent/\',\'.torrent\')">',
+        '       <svg height="18" class="octicon octicon-cloud-download" viewBox="0 0 16 16" version="1.1" width="26" aria-hidden="true"><path fill="#fff" fill-rule="evenodd" d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"></path></svg>',
+        '       itorrents.org ',
+        '    </button>',
+        '    <button class="btn btn-info btn-sm" v-on:click="jumpToDownload(\'https://www.yandex.com/search/?text=\')">',
+        '       <svg height="18" class="octicon octicon-cloud-download" viewBox="0 0 16 16" version="1.1" width="26" aria-hidden="true"><path fill="#fff" fill-rule="evenodd" d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"></path></svg>',
+        '       yandex ',
+        '    </button>',
+        '    </div>',
         '    <br />',
         '    迅雷地址：',
         '    <input class="url" type="text" id="thunderurl" />',
@@ -133,7 +147,7 @@ Vue.component("clzh_content", {
     methods: {
 
         cleanCopyFlag() {
-            var flags = document.getElementsByclass("flag");
+            var flags = document.getElementsByClassName("flag");
             for (var i = 0; i < flags.length; i++) {
                 var it = flags[i];
                 it.parentNode.removeChild(it);
@@ -264,6 +278,9 @@ Vue.component("clzh_content", {
             document.getElementById("qqurl").value = qqurl;
             document.getElementById("thunderdownload").innerHTML = createThunderDownLoadADOm("迅雷下载", thunderurl, "迅雷下载", null, null, "btn btn-link", null);
             document.getElementById("otherdownload").innerHTML = createFlashgetOrOtherDownLoadADOm("其他下载", newurl, flashgeturl, null, null, "", null);
+        },
+        jumpToDownload(rootUrl,footUrl){
+            window.open(rootUrl+document.getElementById("realurl").value.replace('magnet:?xt=urn:btih:',"")+(footUrl?footUrl:""));
         }
     }
 });
