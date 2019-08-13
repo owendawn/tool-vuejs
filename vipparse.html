@@ -35,10 +35,10 @@
           <div class="row">
             <div class="form-inline col-3 sm-nopading">
               <select id="node" class="form-control" style="padding-right:3px;">
-                <optgroup label="常用 ţ ɣ ƛ ɧ ƚ">
+                <optgroup label="常用 ţ ɣ Ĩ ɧ ѣ">
                   <template v-for="it in vipParser">
                     <option :value="it.url">
-                      {{it.tengxun?'ţ':'_'}}_{{it.youku?'ɣ':'_'}}_{{it.iqiyi?'ӻ':'_'}}_{{it.mangguo?'ɧ':'_'}}
+                      {{it.tengxun?'ţ':'_'}}_{{it.youku?'ɣ':'_'}}_{{it.iqiyi?'Ĩ':'_'}}_{{it.mangguo?'ή':'_'}}
                       &emsp;节点&emsp;{{getName(it.url)}}{{it.newTab?' +':''}}
                     </option>
                   </template>
@@ -87,27 +87,22 @@
         type: null,
         vipParser: [
           { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://api.bbbbbb.me/jiexi/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://yun.baiyug.cn/vip/?url=" },
           { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://vip.jlsprh.com/v/3.php?url=" },
           { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://api.bbbbbb.me/jx/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://y.mt2t.com/lines?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "https://www.administratorw.com/admin.php?url=" },
-          
-          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "https://jx.618g.com/?url=" },
-          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "http://jexi.a0296.cn/?url=" },
-          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "http://jx.du2.cc/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://jx.du2.cc/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "https://jx.618g.com/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "https://5.5252e.com/jx/b.php?url=" },
 
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jvip.zz22x.com/jx/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "https://jx.000180.top/180/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: true, mangguo: true, url: "http://jexi.a0296.cn/?url=" },
+          
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "https://www.administratorw.com/admin.php?url=" },
           { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "http://api.nobij.top/?url=" },
-          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: false, url: "https://5.5252e.com/jx/b.php?url=" },
-          { newTab: false, tengxun: false, youku: true, iqiyi: false, mangguo: true, url: "http://jvip.zz22x.com/jx/?url=" },
           { newTab: false, tengxun: false, youku: true, iqiyi: false, mangguo: true, url: "http://030e.com/api.php?url=" },
-          { newTab: false, tengxun: false, youku: false, iqiyi: true, mangguo: true, url: "http://vip.tt-hk.cn/beac.php?url=" },
           { newTab: false, tengxun: false, youku: false, iqiyi: true, mangguo: true, url: "https://5.5252e.com/p/iqiyi.php?url=" },
           
           { newTab: false, tengxun: false, youku: true, iqiyi: false, mangguo: false, url: "https://beaacc.com/21/?url=" },
-          { newTab: false, tengxun: false, youku: false, iqiyi: false, mangguo: true, url: "https://jx.000180.top/180/?url=" },
-          { newTab: false, tengxun: false, youku: false, iqiyi: true, mangguo: true, url: "http://v.2gty.com/apiurl/yun.php?url=" },
-          
           
         ]
       },
