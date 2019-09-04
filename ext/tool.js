@@ -1,4 +1,4 @@
-// ==================================== es6工具类 ========================================
+﻿// ==================================== es6工具类 ========================================
 class Tools {
     static loadScript(url, callback) {
         let old_script = document.getElementById(url);
@@ -503,7 +503,7 @@ Vue.component("spzgif_content", {
 });
 
 
-// ==================================== 金融转换部分========================================
+// ==================================== 经纬度转换部分========================================
 Vue.component("jwzh_content", {
     template: [
         '<div class="content">',
@@ -589,9 +589,9 @@ Vue.component("jwzh_content", {
             var all=document.getElementById("rawdu1").value;
             var str1=all.trim().split("°");
             document.getElementById("rawdu").value=str1[0];
-            var str2=str1[1].trim().split("'");
+            var str2=str1[1].trim().replace("′","'").split("'");
             document.getElementById("rawfen").value=str2[0];
-            document.getElementById("rawmiao").value=str2[1].replace("\"","");
+            document.getElementById("rawmiao").value=str2[1].replace("″","").replace("\"","");
         }
     }
 });
