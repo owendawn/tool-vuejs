@@ -14,6 +14,7 @@ Vue.component("Navbar",{
         '                    <a class="dropdown-item" v-on:click="urlChange(\'JRZH\')"> 金 融 转 换 </a>',
         '                    <a class="dropdown-item" v-on:click="urlChange(\'JWZH\')"> 经 纬 转 换 </a>',
         '                    <a class="dropdown-item" v-on:click="urlChange(\'SPZGIF\')">视频 转 GIF</a>',
+        '                    <a class="dropdown-item" v-on:click="urlChange(\'CLSBH\')">车辆识别号解析</a>',
         '                    <a class="dropdown-item" href="#">Another action</a>',
         '                    <div class="dropdown-divider"></div>',
         '                    <a class="dropdown-item" href="#">Something else here</a>',

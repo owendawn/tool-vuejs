@@ -596,6 +596,154 @@ Vue.component("jwzh_content", {
     }
 });
 
+// ==================================== 车辆识别号部分========================================
 
+Vue.component("clsbh_content", {
+    template: [
+        '<div class="content">',
+        '    <strong>车辆识别号</strong><small> / 车架号</small>：',
+        '    <input class="price" type="text" id="raw" ',
+        // '       value="lvgbp87e2hg108849"',
+        '    />',
+        '    <button class="btn btn-success" v-on:click="convert">转换</button>',
+        '    <button class="btn btn-info" v-on:click="more">更多</button>',
+        '    <br /><br />',
+        '    <table class="table table-striped table-borderless" style="text-align:center;">',
+        '        <thead><tr><th>序号</th><th>值</th><th>含义</th></tr></thead>',
+        '        <tbody id="tbody"></tbody>',
+        '    </table>',
+        '</div>'
+    ].join(""),
+    mounted() {
+        // this.convert();
+    },
+    methods: {
+        more(){
+            let v = document.getElementById("raw").value;
+            if (v && v.trim().length === 17) {
+                v=v.toUpperCase();
+               window.open("http://www.17vin.com/vin/"+v);
+            }
+        },
+        convert() {
+            let v = document.getElementById("raw").value;
+            if (v && v.trim().length === 17) {
+                v=v.toUpperCase();
+                let strs=v.split('');
+                let htmls=[];
+                htmls.push(['<tr><td>1</td><td>',strs[0],'</td><td>',this.parseSCGB(strs[0]),'</td></tr>'].join(''));
+                htmls.push(['<tr><td>2、1~3</td><td>',strs.slice(0,3).join(''),'</td><td>',this.parseSCCS(strs),'</td></tr>'].join(''));
+                htmls.push(['<tr><td>9</td><td>',strs[8],'</td><td>VIN检验数代码</td></tr>'].join(''));
+                htmls.push(['<tr><td>10</td><td>',strs[9],'</td><td>',this.parseCXNK(strs[9]),'</td></tr>'].join(''));
+                htmls.push(['<tr><td>11</td><td>',strs[10],'</td><td>总装工厂代码</td></tr>'].join(''));
+                htmls.push(['<tr><td>12-17</td><td>',strs.slice(11).join(''),'</td><td>生产序列号</td></tr>'].join(''));
+                document.getElementById('tbody').innerHTML=htmls.join('');
+            }
+        },
+        parseQCLB(flag){
+            switch(flag){
+                case 1:return '载重汽车';
+                case 2:return '越野汽车';
+                case 3:return '倾卸汽车';
+                case 4:return '牵引车';
+                case 5:return '特种车'; 
+                case 6:return '客车（大、中、小）';
+                case 7:return '轿车';
+                case 8:return '挂车';
+                case 9:return '半挂车、加长货挂车';
+                default:return '未知汽车类别'
+            }
+        },
+        parseSCGB(flag){
+            switch(flag){
+                case '1' : return '美国';
+                case 'J' : return '日本';
+                case 'S' : return '英国';
+                case '2' : return '加拿大';
+                case 'K' : return '韩国';
+                case 'T' : return '瑞士';
+                case '3' : return '墨西哥';
+                case 'L' : return '中国';
+                case 'V' : return '法国 ';
+                case '4' : return '美国';
+                case 'R' : return '台湾';
+                case 'W' : return '德国 ';
+                case '6' : return '澳大利亚';
+                case 'Y' : return '瑞典';
+                case '9' : return '巴西';
+                case 'Z' : return '意大利';
+                default : return '未知国家';
+            }
+        },
+        parseSCCS(flags){
+            switch(flags.slice(0,3).join("")){
+                case 'LJ1':return '安徽江淮汽车集团有限公司';
+                case 'LE4':return '北京奔驰-戴姆勒·克莱斯勒汽车有限公司';
+                case 'LBE':return '北京现代汽车有限公司';
+                case 'LGX':return '比亚迪汽车有限公司';
+                case 'LVS':return '长安福特马自达汽车有限公司';
+                case 'LHA':return '大迪汽车集团有限公司';
+                case 'LVH':return '东风本田汽车有限公司';
+                case 'LGD':return '东风汽车股份有限公司';
+                case 'LGB':return '东风汽车有限公司';
+                case 'LJD':return '东风悦达起亚汽车有限公司';
+                case 'LDN':return '东南(福建)汽车工业有限公司';
+                case 'LTN':return '东南(福建)汽车工业有限公司';
+                case 'LHG':return '广州本田汽车有限公司';
+                case 'LVG':return '广州丰田汽车有限公司';
+                case 'LKH':return '哈飞汽车股份有限公司';
+                case 'LTA':return '河北中兴汽车制造有限公司';
+                case 'LBV':return '华晨宝马汽车有限公司';
+                case 'LJX':return '江铃汽车股份有限公司';
+                case 'LVF':return '江西昌河铃木汽车有限责任公司';
+                case 'LVV':return '奇瑞汽车有限公司';
+                case 'LG1':return '荣成华泰汽车有限公司';
+                case 'LSV':return '上海大众汽车有限公司';
+                case 'LJU':return '上海华普汽车有限公司';
+                case 'LSJ':return '上海汽车股份有限公司';
+                case 'LSG':return '上海通用汽车有限公司';
+                case 'LZW':return '上汽通用五菱汽车股份有限公司';
+                case 'LDC':return '神龙汽车有限公司';
+                case 'LSY':return '沈阳华晨金杯汽车有限公司';
+                case 'LFM':return '天津一汽丰田汽车有限公司';
+                case 'LTV':return '天津一汽丰田汽车有限公司';
+                case 'LFP':return '天津一汽夏利汽车股份有限公司';
+                case 'LTJ':return '天津一汽夏利汽车股份有限公司';
+                case 'LFV':return '一汽-大众汽车有限公司';
+                case 'LH1':return '一汽海马汽车有限公司';
+                case 'LNP':return '跃进汽车集团公司';
+                case 'LB3':return '浙江豪情汽车制造有限公司';
+                case 'L6T':return '浙江吉利汽车有限公司';
+                case 'LFP':return '中国第一汽车集团公司';
+                case 'LS5':return '重庆长安铃木汽车有限公司';
+                case 'LLV':return '重庆力帆乘用车有限公司';
+                default:return this.parseSCGB(flags[0])+'-未知生产厂商';
+            }
+        },
+        parseCXNK(flag){
+            let codes=['1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','J','K','L','M','N','P','R','S','T','V','W','X','Y'];
+            let begin=false;
+            let offset=1;
+            while(!begin){
+                for(let i=codes.length-1;i>=0;){
+                    if(codes[i]===codes[(new Date().getFullYear()+10)%codes.length-1]){
+                        begin=true;
+                    }
+                    if(begin){
+                        offset--;
+                    }
+                    if(flag===codes[i]){
+                        break;
+                    }
+                    i--;
+                    if(i===-1){
+                        i=codes.length-1;
+                    }
+                }
+            }
+            return offset+new Date().getFullYear();
+        }
+    }
+});
 
 // ==================================== 其他========================================

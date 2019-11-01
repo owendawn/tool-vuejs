@@ -26,6 +26,7 @@
                 <div className="tip">
                     <p>☺ -v- Jest with an ass and he will flap you in the face with his tail.</p>
                 </div>
+                <clsbh_content v-if="activeContent('CLSBH')"></clsbh_content>
                 <jrzh_content v-if="activeContent('JRZH')"></jrzh_content>
                 <spzgif_content v-if="activeContent('SPZGIF')"></spzgif_content>
                 <clzh_content v-if="activeContent('CLZH')"></clzh_content>
@@ -46,6 +47,7 @@
                 },
                 changeType(type) {
                     this.type = type;
+                    console.log(type,this.activeContent('CLSBH'));
                     window.location.hash = "#" + type;
                 }
             }
