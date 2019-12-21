@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Vip Parse</title>
-  <link rel="icon" href="https://img1002.pocoimg.cn/image/poco/works/56/2019/0830/23/15671780407864308_201117043_H960.png" type="image/x-icon" />
+  <link rel="icon" href="http://pic.yupoo.com/owendawn/7d83eaa2/ac62287a.png" type="image/x-icon" />
   <meta name="Keywords" content="vip解析,个人使用请勿用于商用传播">
   <meta name="Description" content="vip解析,个人使用请勿用于商用传播">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -38,8 +38,8 @@
                 <optgroup label="常用 ţ ɣ Ĩ ɧ ѣ">
                   <template v-for="it in vipParser">
                     <option :value="it.url">
-                      {{it.tengxun?'ţ':'_'}}_{{it.youku?'ɣ':'_'}}_{{it.iqiyi?'Ĩ':'_'}}_{{it.mangguo?'ή':'_'}}
-                      &emsp;节点&emsp;{{getName(it.url)}}{{it.newTab?' +':''}}
+                      {{it.tengxun?'Ⓣ':'⎵'}}_{{it.youku?'Ⓨ':'⎵'}}_{{it.iqiyi?'Ⓘ':'⎵'}}_{{it.mangguo?'ⓜ':'⎵'}}
+                      &emsp;{{getName(it.url)}}{{it.newTab?' +':''}}
                     </option>
                   </template>
                 </optgroup>
@@ -86,26 +86,26 @@
         isFull: false,
         type: null,
         vipParser: [
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "https://www.administratorw.com/admin.php?url=" },
           { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://api.bbbbbb.me/jx/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://17kyun.com/api.php?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "https://www.administratorw.com/video.php?url=" },
-          
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://vip.jlsprh.com/v/3.php?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://api.bbbbbb.me/jiexi/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://api.drgxj.com/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://jx.du2.cc/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "https://jx.618g.com/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://api.bbbbbb.me/jiexi/?url=" },
+
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://api.nobij.top/?url=" },
           { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://jx.618ge.com/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://jx.drgxj.com/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://jx.598110.com/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://jx.du2.cc/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "https://jx.618g.com/?url=" },
-
-          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: false, url: "https://jx.000180.top/180/?url=" },
-          { newTab: false, tengxun: true, youku: false, iqiyi: true, mangguo: false, url: "http://api.nobij.top/?url=" },
-          { newTab: false, tengxun: true, youku: false, iqiyi: true, mangguo: false, url: "http://api.sumingys.com/index.php?url=" },
-          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: false, url: "http://jiexi.071811.cc/jx.php?url=" },
-
-          { newTab: false, tengxun: false, youku: true, iqiyi: false, mangguo: false, url: "http://jvip.zz22x.com/jx/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jx.598110.com/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jiexi.071811.cc/jx.php?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "http://17kyun.com/api.php?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "https://www.administratorw.com/video.php?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "https://www.administratorw.com/admin.php?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "http://api.drgxj.com/?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "http://jvip.zz22x.com/jx/?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: true, url: "http://jx.drgxj.com/?url=" },
+          
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "http://api.sumingys.com/index.php?url=" },
+          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: false, url: "http://vip.jlsprh.com/v/3.php?url=" },
+          
+          { newTab: false, tengxun: false, youku: true, iqiyi: false, mangguo: false, url: "https://jx.000180.top/180/?url=" },
 
 
         ]
@@ -118,7 +118,8 @@
           console.log(_allurl)
           document.querySelectorAll('#node option').forEach(function (it, idx, all) {
             if (_allurl.indexOf(it.value) !== -1) {
-              it.selected = true;
+              it.setAttribute('checked' , true);
+              it.setAttribute('selected' , true);
               document.getElementById("vurl").value = _allurl.substring(it.value.length);
             }
           });

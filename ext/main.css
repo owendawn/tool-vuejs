@@ -39,6 +39,7 @@ body{margin:0;position: fixed;width:100%;height: 100%;}
 .pager-VIPJX optgroup{font-style: italic;color:silver;}
 .pager-VIPJX optgroup>option,option{font-style: normal;color:gray;}
 .pager-VIPJX .control{width:100%;height:80px;margin-top: 20px;padding:0 15px;}
+.pager-VIPJX .control optgroup>option:checked{color:white;background-color: cadetblue;}
 .pager-VIPJX .magicbtns{padding:8px 0;overflow: hidden;}
 .pager-VIPJX .videoIframediv{padding: 15px 15px;margin:0;width:100%;height:calc(100% - 180px);border:1px solid silver;border-radius: 5px;}
 .pager-VIPJX.pager .videoIframediv iframe{background: black;border-radius: 2px;border-style: hidden;width:100%;height: 100%;}
