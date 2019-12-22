@@ -38,7 +38,7 @@
                 <optgroup label="常用 ţ ɣ Ĩ ɧ ѣ">
                   <template v-for="it in vipParser">
                     <option :value="it.url">
-                      {{it.tengxun?'Ⓣ':'⎵'}}_{{it.youku?'Ⓨ':'⎵'}}_{{it.iqiyi?'Ⓘ':'⎵'}}_{{it.mangguo?'ⓜ':'⎵'}}
+                      {{it.tengxun?'ⓣ':'⎵'}}_{{it.youku?'ⓨ':'⎵'}}_{{it.iqiyi?'ⓘ':'⎵'}}_{{it.mangguo?'ⓜ':'⎵'}}
                       &emsp;{{getName(it.url)}}{{it.newTab?' +':''}}
                     </option>
                   </template>
