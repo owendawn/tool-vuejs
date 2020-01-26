@@ -22,7 +22,7 @@
     <div id="root">
         <div>
             <Navbar ref="Navbar" @toggle-type="changeType"></Navbar>
-            <div class="pager">
+            <div class="pager" :class=["page-"+this.type]>
                 <div className="tip">
                     <p>☺ -v- Jest with an ass and he will flap you in the face with his tail.</p>
                 </div>

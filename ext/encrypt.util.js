@@ -12,6 +12,40 @@ var EncryptUtil = {
             41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1
         ),
 
+        toBytes: function (input) {
+            var  _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+            var chr1, chr2, chr3;
+            var enc1, enc2, enc3, enc4;
+            var i = 0;
+            var arr=[];
+            input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+            while (i < input.length) {
+                enc1 = _keyStr.indexOf(input.charAt(i++));
+                enc2 = _keyStr.indexOf(input.charAt(i++));
+                if(i<=input.length){
+                    chr1 = (enc1 << 2) | (enc2 >> 4);
+                    arr.push(chr1)
+                }else{
+                    break;
+                }
+                enc3 = _keyStr.indexOf(input.charAt(i++));
+                if(i<=input.length){
+                    chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+                    arr.push(chr2)
+                }else{
+                    break;
+                }
+                enc4 = _keyStr.indexOf(input.charAt(i++));
+                if(i<=input.length){
+                    chr3 = ((enc3 & 3) << 6) | enc4;
+                    arr.push(chr3)
+                }else{
+                    break;
+                }
+            }
+            return arr;
+        },
+
         encode64: function (str) {
             var out, i, len;
             var c1, c2, c3;

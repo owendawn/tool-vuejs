@@ -65,12 +65,16 @@ Vue.component("clzh_content", {
         '<div class="content" >',
         '    原始地址：',
         '    <input class="url" type="text" id="inputurl" />',
-        '    <button class="btn btn-success btn-sm" v-on:click="convert(false)">Utf16转换</button>',
-        '    <button class="btn btn-success btn-sm" v-on:click="convert(true )">Unicode转换</button>',
         '    <span>',
         '        <button class="cp btn btn-primary btn-sm" data-clipboard-target="#inputurl" aria-label="复制成功！">复制</button>',
         '    </span>',
         '    <button class="btn btn-default btn-sm" v-on:click="clear">清空</button>',
+        '    <div style="margin-top:6px;">',
+        '       <button class="btn btn-success btn-sm" v-on:click="convert(1)">Utf16转换</button>',
+        '       <button class="btn btn-success btn-sm" v-on:click="convert(2)">Unicode转换</button>',
+        '       <button class="btn btn-success btn-sm" v-on:click="convert(3)">GBK转换</button>',
+        '    </div>',
+        '    <hr>',
         '    <div>',
         '       <a class="btn btn-outline-info btn-sm" target="_blank" href="http://www.torrent.org.cn/">',
         '           <svg height="16" class="octicon octicon-issue-reopened" viewBox="0 0 14 16" version="1.1" width="16" aria-hidden="true"><path fill="silver" fill-rule="evenodd" d="M8 9H6V4h2v5zm-2 3h2v-2H6v2zm6.33-2H10l1.5 1.5c-1.05 1.33-2.67 2.2-4.5 2.2A5.71 5.71 0 0 1 1.3 8c0-.34.03-.67.09-1H.08C.03 7.33 0 7.66 0 8c0 3.86 3.14 7 7 7 2.19 0 4.13-1.02 5.41-2.59L14 14v-4h-1.67zM1.67 6H4L2.5 4.5C3.55 3.17 5.17 2.3 7 2.3c3.14 0 5.7 2.56 5.7 5.7 0 .34-.03.67-.09 1h1.31c.05-.33.08-.66.08-1 0-3.86-3.14-7-7-7-2.19 0-4.13 1.02-5.41 2.59L0 2v4h1.67z"></path></svg>',
@@ -123,6 +127,8 @@ Vue.component("clzh_content", {
     ].join("")),
     beforeMount() {
         Tools.asyncLoadScripts(["./ext/encrypt.util.js"]);
+        Tools.asyncLoadScripts(["./ext/gbk/encoding-indexes.js"]);
+        Tools.asyncLoadScripts(["./ext/gbk/encoding.js"]);
     },
     mounted() {
         // var url='ed2k://|file|%E8%B6%8A%E7%8B%B1.Prison.Break.S05E08.%E4%B8%AD%E8%8B%B1%E5%AD%97%E5%B9%95.HDTVrip.720P-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86V2.mp4|619162687|1551a1c5c2807796aaffee499a46f3bf|h=vk7qarwo76nmosnvbzlsfjx2k2myy32n|/';
@@ -167,14 +173,14 @@ Vue.component("clzh_content", {
             this.cleanCopyFlag();
         },
 
-        convert(isAnsi) {
+        convert(flag) {
 
             function ThunderEncode(t_url) {
                 var thunderPrefix = "AA";
                 var thunderPosix = "ZZ";
                 var thunderTitle = "thunder://";
                 var tem_t_url = t_url;
-                var thunderUrl = thunderTitle + EncryptUtil.base64.encode64(EncryptUtil.utf16to8(thunderPrefix + tem_t_url + thunderPosix));
+                var thunderUrl = thunderTitle + EncryptUtil.base64.encode64(EncryptUtil.utf16to8(thunderPrefix + tem_t_url + thunderPosix))+'==';
                 return thunderUrl;
             }
             function Thunderdecode(url) {
@@ -183,18 +189,26 @@ Vue.component("clzh_content", {
                 thunderUrl = thunderUrl.substr(2, thunderUrl.length - 4);
                 return thunderUrl;
             }
-            function ThunderEncode1(t_url) {
-                var thunderPrefix = "AA";
-                var thunderPosix = "ZZ";
-                var thunderTitle = "thunder://";
-                var tem_t_url = t_url;
-                var thunderUrl = thunderTitle + EncryptUtil.base64.encode64(EncryptUtil.Ansi.strUnicode2Ansi(thunderPrefix + tem_t_url + thunderPosix));
-                return thunderUrl;
-            }
+            // function ThunderEncode1(t_url) {
+            //     var thunderPrefix = "AA";
+            //     var thunderPosix = "ZZ";
+            //     var thunderTitle = "thunder://";
+            //     var tem_t_url = t_url;
+            //     var thunderUrl = thunderTitle + EncryptUtil.base64.encode64(EncryptUtil.Ansi.strUnicode2Ansi(thunderPrefix + tem_t_url + thunderPosix))+'==';
+            //     return thunderUrl;
+            // }
             function Thunderdecode1(url) {
                 url = url.replace('thunder://', '');
                 let thunderUrl = EncryptUtil.Ansi.strAnsi2Unicode(EncryptUtil.base64.decode64(url));
                 thunderUrl = thunderUrl.substr(2, thunderUrl.length - 4);
+                return thunderUrl;
+            }
+            function Thunderdecode2(url) {
+                url = url.replace('thunder://', '');
+                url=url.substr(0,url.length-2);
+                let thunderUrl = new TextDecoder('gbk').decode(new Uint8Array(EncryptUtil.base64.toBytes(url)));
+                thunderUrl = thunderUrl.replace(/\s/g,"").substr(2, thunderUrl.length - 4);
+                console.log(thunderUrl)
                 return thunderUrl;
             }
 
@@ -231,10 +245,12 @@ Vue.component("clzh_content", {
             }
             let newurl;
             if (oldurl.indexOf("thunder://") != -1) {
-                if (isAnsi) {
-                    newurl = Thunderdecode1(oldurl);
-                } else {
+                if (flag===1){
                     newurl = Thunderdecode(oldurl);
+                }else if(flag===2) {
+                    newurl = Thunderdecode1(oldurl);
+                } else if(flag===3){
+                    newurl = Thunderdecode2(oldurl);
                 }
             } else if (oldurl.indexOf("Flashget://") != -1) {
                 newurl = Flashgetdecode(oldurl);
@@ -245,11 +261,11 @@ Vue.component("clzh_content", {
             }
 
             let thunderurl;
-            if (isAnsi) {
-                thunderurl = ThunderEncode1(newurl);
-            } else {
+            // if(flag===1){
                 thunderurl = ThunderEncode(newurl);
-            }
+            // }else if (flag===2) {
+            //     thunderurl = ThunderEncode1(newurl);
+            // }
             let flashgeturl = flashgetencode(newurl);
             let qqurl = qqencode(newurl);
 

@@ -52,7 +52,7 @@ body{margin:0;position: fixed;width:100%;height: 100%;}
 .videomodel .pager-VIPJX.pager .control input,.videomodel .pager.pager-VIPJX .control select{background: #2f2e2e;color:#766986;border-color:#6f6b6b;font-weight: 100;font-family: monospace;font-size:1.1rem;}
 
 /* ========================================== 磁链转换部分 ===================================================== */
-.page-CLZH .url{width:400px;margin-top: 8px;font-size: 9pt;padding:1px 2px;border: 1px solid #aaa6a6;height:27px;}
+.page-CLZH .url{width:calc(80% - 200px);max-width:800px;margin-top: 8px;font-size: 9pt;padding:1px 2px;border: 1px solid #aaa6a6;height:27px;}
 .pager.page-CLZH .content>*{vertical-align: bottom;}
 
 /* ========================================== 金融转换部分 ===================================================== */
