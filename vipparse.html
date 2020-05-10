@@ -28,8 +28,7 @@
         </div>
 
         <div class="videoIframediv">
-          <iframe src="" class="videoIframe" id="videoIframe" frameBorder="no" border="0" marginWidth="0"
-            marginHeight="0" scrolling="no" allowtransparency="yes"></iframe>
+          <iframe src="" class="videoIframe" id="videoIframe" frameBorder="no" border="0" marginWidth="0"  marginHeight="0" scrolling="no" allowtransparency="yes"></iframe>
         </div>
         <div class="control">
           <div class="row">
@@ -37,10 +36,7 @@
               <select id="node" class="form-control" style="padding-right:3px;">
                 <optgroup label="常用 ţ ɣ Ĩ ɧ ѣ">
                   <template v-for="it in vipParser">
-                    <option :value="it.url">
-                      {{it.tengxun?'ⓣ':'⎵'}}_{{it.youku?'ⓨ':'⎵'}}_{{it.iqiyi?'ⓘ':'⎵'}}_{{it.mangguo?'ⓜ':'⎵'}}
-                      &emsp;{{getName(it.url)}}{{it.newTab?' +':''}}
-                    </option>
+                    <option :value="it.url">{{it.tengxun?'ⓣ':'⎵'}}_{{it.youku?'ⓨ':'⎵'}}_{{it.iqiyi?'ⓘ':'⎵'}}_{{it.mangguo?'ⓜ':'⎵'}}&emsp;{{getName(it.url)}}{{it.newTab?' +':''}}</option>
                   </template>
                 </optgroup>
               </select>
@@ -49,12 +45,10 @@
               <input type="text" id="vurl" class="form-control col-9" placeholder="输入视频网址" />
               <div class="col-3 sm-nopading">
                 <button class="btn btn-outline-success col-7 magicbtns" v-on:click="clickParse">解析</button>
-                <button class="btn btn-outline-info col-4 magicbtns" v-on:click="showModel"
-                  style="padding: 5px 0px 9px 0; vertical-align: top;">
+                <button class="btn btn-outline-info col-4 magicbtns" v-on:click="showModel"  style="padding: 5px 0px 9px 0; vertical-align: top;">
                   <svg id="expand" class="feather feather-maximize-2 sc-iwsKbI cnlcoQ"
                     xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"
-                    stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                    aria-hidden="true" data-reactid="741">
+                    stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" data-reactid="741">
                     <polyline points="15 3 21 3 21 9" />
                     <polyline points="9 21 3 21 3 15" />
                     <line x1="21" y1="3" x2="14" y2="10" />
@@ -62,8 +56,7 @@
                   </svg>
                   <svg id="compress" style="display: none" class="feather feather-minimize-2 sc-iwsKbI cnlcoQ"
                     xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"
-                    stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                    aria-hidden="true" data-reactid="776">
+                    stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"  aria-hidden="true" data-reactid="776">
                     <polyline points="4 14 10 14 10 20" />
                     <polyline points="20 10 14 10 14 4" />
                     <line x1="14" y1="10" x2="21" y2="3" />
@@ -86,21 +79,30 @@
         isFull: false,
         type: null,
         vipParser: [
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://api.bbbbbb.me/jx/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://jx.du2.cc/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://api.bbbbbb.me/jiexi/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://vip.jlsprh.com/v/3.php?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://jx.598110.com/?url=" },
-          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: true, url: "http://17kyun.com/api.php?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: true, mangguo: false, url: "http://jiexi.071811.cc/jx.php?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jx.618ge.com/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jx.618ge.com/jx/jx.php?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jx.du2.cc/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://vip.jlsprh.com/v/3.php?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jx.598110.com/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jx.598110.com/zuida.php?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://jiexi.380k.com/?url=" },
+          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "https://2.08bk.com/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: true, mangguo: true, url: "http://jqaaa.com/jx.php?url=" },
 
-          { newTab: false, tengxun: true, youku: true, iqiyi: false, mangguo: true, url: "http://okjx.cc/?url=" },
+
+          { newTab: false, tengxun: true, youku: false, iqiyi: true, mangguo: false, url: "https://660e.com/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: true, mangguo: false, url: "http://yun.mt2t.com/lines?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "http://jsap.attakids.com/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "http://api.bbbbbb.me/jiexi/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "http://api.bbbbbb.me/jx/?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: true, url: "http://okjx.cc/?url=" },
          
-          { newTab: false, tengxun: false, youku: true, iqiyi: true, mangguo: false, url: "http://jiexi.071811.cc/jx.php?url=" },
 
-          { newTab: false, tengxun: false, youku: true, iqiyi: false, mangguo: true, url: "http://jx.618ge.com/jx/jx.php?url=" },
           { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: false, url: "https://jx.618g.com/?url=" },
-          { newTab: false, tengxun: false, youku: false, iqiyi: true, mangguo: false, url: "https://www.administratorw.com/video.php?url=" },
-          { newTab: false, tengxun: false, youku: false, iqiyi: true, mangguo: false, url: "https://www.administratorw.com/admin.php?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: false, url: "https://www.administratorw.com/video.php?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: false, url: "https://www.administratorw.com/admin.php?url=" },
+          { newTab: false, tengxun: true, youku: false, iqiyi: false, mangguo: false, url: "http://17kyun.com/api.php?url=" },
 
 
         ]
