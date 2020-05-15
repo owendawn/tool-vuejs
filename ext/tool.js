@@ -762,4 +762,83 @@ Vue.component("clsbh_content", {
     }
 });
 
+
+
+
+// ==================================== 视频转gif部分 ========================================
+Vue.component("zphdzh_content", {
+    template: [
+        '<div class="content">',
+        '    <script src="https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.js"></script>',
+        '    <div>',
+        '        <input type="file" class="btn btn-success" v-on:change="changeFile" />',
+        '    </div>',
+        '    <hr />',
+        '    <div class="img-area">',
+        '        <img ref="rawImg" src=""  style="max-width: 50%;max-height:450px;"  />',
+        '        <img ref="toImg" src=""  style="max-width: 50%;max-height:450px;"  />',
+        '        <canvas ref="toCanvas" src="" stlye="vertical-align: bottom;"    />',
+        '    </div>',
+        '    <hr />',
+        '    <div>',
+        '    </div>',
+        '    <div class="captures" ref="captures">',
+        '    </div>',
+        '</div>',
+    ].join(""),
+    data() {
+        return {
+            delay: 200,
+            timeoutKeeper: null,
+            width: 100,
+        }
+    },
+
+    mounted() {
+        Tools.syncLoadScripts(["ext/lib/grayscale.js"])
+        let that = this;
+        // this.$refs.rawImg.addEventListener("ended", function () {
+        //     that.finishDrawVideo();
+        // });
+    },
+    methods: {
+        changeFile(e) {
+            var that=this;
+            console.log(e.target)
+            this.$refs.rawImg.src = URL.createObjectURL(e.target.files[0]);
+            var reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);//转化成base64数据类型
+            reader.onload = function(e){
+                that.$refs.toImg.onload = function(){//必须onload之后再画
+                    that.$refs.toImg.width=that.$refs.rawImg.width;
+                    that.$refs.toImg.height=that.$refs.rawImg.height;
+                    grayscale( that.$refs.toImg);
+                }
+                that.$refs.toImg.src=this.result;
+
+                var img = new Image;
+                img.onload = function(){//必须onload之后再画
+                    var c=that.$refs.toCanvas;
+                    var ctx=c.getContext("2d");
+                    c.width=img.width;
+                    c.height=img.height;
+                    ctx.drawImage(img,0,0);
+                    that.$refs.toCanvas.style.width=that.$refs.rawImg.width+"px";
+                    that.$refs.toCanvas.style.height=that.$refs.rawImg.height+"px";
+                    grayscale( img);
+                }
+                img.src = this.result;
+                
+            }
+        },
+       toGray(e){
+            this.$refs.toImg.src=this.$refs.rawImg.src;
+            console.log(this.$refs.toImg)
+            grayscale( this.$refs.toImg);
+       }
+    }
+
+
+});
+
 // ==================================== 其他========================================

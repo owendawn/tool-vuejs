@@ -30,7 +30,7 @@ body{margin:0;position: fixed;width:100%;height: 100%;}
 #root{width:100%;height:100%;}
 
 
-
+#pan-nav-drumpdown{line-height: 1.5rem;}
 
 /* ========================================== vip视频解析部分 ===================================================== */
 @media screen and (max-width:600px) { .pager-VIPJX.pager{padding:0;height: 500px;}  }
@@ -61,3 +61,6 @@ body{margin:0;position: fixed;width:100%;height: 100%;}
 /* ========================================== 视频转换gif部分 ===================================================== */
 .page-SPZGIF .content{overflow: auto;}
 .page-SPZGIF .captures{overflow-x: auto; display: flex; padding: 5px 0;}
+
+/* ========================================== 图片灰度转换部分 ===================================================== */
+.page-TPHDZH .img-area>*{vertical-align: top;}
